@@ -105,7 +105,7 @@
 
       <!-- Mobile menu button -->
       <div class="md:hidden">
-        <Button variant="ghost" size="sm" on:click={() => mobileMenuOpen = !mobileMenuOpen}>
+        <Button variant="ghost" size="sm" onclick={() => mobileMenuOpen = !mobileMenuOpen}>
           {#if mobileMenuOpen}
             <X class="h-6 w-6" />
           {:else}
