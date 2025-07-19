@@ -31,7 +31,7 @@
 				<span class="inline-flex">Sin código, sin nodos, sin flujos de trabajo y sin límites.</span>
 			</p>
 
-			<div class="form w-[400px] h-[350px] mx-auto my-8 rounded-md overflow-hidden">
+			<div class="form w-full max-w-[400px] h-[380px] mx-auto my-8 rounded-md overflow-hidden">
 				<iframe class="w-full h-full" src="https://n8n2.afaminds.com/form/agentefy-form" title="formulario de registro" frameborder="0"></iframe>
 			</div>
 		</div>
