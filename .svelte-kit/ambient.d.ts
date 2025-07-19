@@ -37,11 +37,12 @@ declare module '$env/static/private' {
 	export const ComSpec: string;
 	export const DriverData: string;
 	export const EDITOR: string;
-	export const EFC_8272_1262719628: string;
-	export const EFC_8272_1592913036: string;
-	export const EFC_8272_2283032206: string;
-	export const EFC_8272_2775293581: string;
-	export const EFC_8272_3789132940: string;
+	export const EFC_10448_1262719628: string;
+	export const EFC_10448_1592913036: string;
+	export const EFC_10448_2283032206: string;
+	export const EFC_10448_2775293581: string;
+	export const EFC_10448_3789132940: string;
+	export const ERLANG_HOME: string;
 	export const FPS_BROWSER_APP_PROFILE_STRING: string;
 	export const FPS_BROWSER_USER_PROFILE_STRING: string;
 	export const GIT_ASKPASS: string;
@@ -78,6 +79,7 @@ declare module '$env/static/private' {
 	export const npm_lifecycle_event: string;
 	export const npm_lifecycle_script: string;
 	export const npm_node_execpath: string;
+	export const npm_package_engines_node: string;
 	export const npm_package_json: string;
 	export const npm_package_name: string;
 	export const npm_package_version: string;
@@ -116,6 +118,9 @@ declare module '$env/static/private' {
 	export const VSCODE_GIT_IPC_HANDLE: string;
 	export const VSCODE_INJECTION: string;
 	export const windir: string;
+	export const WSLENV: string;
+	export const WT_PROFILE_ID: string;
+	export const WT_SESSION: string;
 }
 
 /**
@@ -158,11 +163,12 @@ declare module '$env/dynamic/private' {
 		ComSpec: string;
 		DriverData: string;
 		EDITOR: string;
-		EFC_8272_1262719628: string;
-		EFC_8272_1592913036: string;
-		EFC_8272_2283032206: string;
-		EFC_8272_2775293581: string;
-		EFC_8272_3789132940: string;
+		EFC_10448_1262719628: string;
+		EFC_10448_1592913036: string;
+		EFC_10448_2283032206: string;
+		EFC_10448_2775293581: string;
+		EFC_10448_3789132940: string;
+		ERLANG_HOME: string;
 		FPS_BROWSER_APP_PROFILE_STRING: string;
 		FPS_BROWSER_USER_PROFILE_STRING: string;
 		GIT_ASKPASS: string;
@@ -199,6 +205,7 @@ declare module '$env/dynamic/private' {
 		npm_lifecycle_event: string;
 		npm_lifecycle_script: string;
 		npm_node_execpath: string;
+		npm_package_engines_node: string;
 		npm_package_json: string;
 		npm_package_name: string;
 		npm_package_version: string;
@@ -237,6 +244,9 @@ declare module '$env/dynamic/private' {
 		VSCODE_GIT_IPC_HANDLE: string;
 		VSCODE_INJECTION: string;
 		windir: string;
+		WSLENV: string;
+		WT_PROFILE_ID: string;
+		WT_SESSION: string;
 		[key: `PUBLIC_${string}`]: undefined;
 		[key: `${string}`]: string | undefined;
 	}
