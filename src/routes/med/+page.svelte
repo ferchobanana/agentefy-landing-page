@@ -1,4 +1,7 @@
 <script lang="ts">
+  import Logo from "$lib/imgs/logo.png";
+  import IconoLogo from "$lib/imgs/icono-agentefy.png";
+  import OrdenMedica from "$lib/imgs/orden-medica-edit.jpg";
   import { Button } from "$lib/components/ui/button";
   import {
     Card,
@@ -10,8 +13,11 @@
   import {
     MessageCircle,
     Calendar,
+	Images,
     FileText,
+	FileCheck,
     UserCheck,
+	RefreshCwOff,
     CheckCircle,
     Star,
     Phone,
@@ -28,27 +34,27 @@
   const features = [
     {
       icon: Calendar,
-      title: "Agendamiento Automático",
+      title: "Agendamiento de Citas",
       description:
-        "Programa citas médicas automáticamente y sincroniza con Google Calendar en tiempo real.",
+        "Cualquier sistema de agendamiento de forma automática. El agente sabe cómo administrar las citas.",
     },
     {
-      icon: FileText,
-      title: "Lectura de Recetas",
+      icon: Images,
+      title: "Interpretación de Ordenes Médicas",
       description:
-        "Interpreta recetas médicas escritas a mano usando IA avanzada de reconocimiento óptico.",
+        "Nuestros agentes entienden de manera nativa ordenes médicas, imagenes, documentos o hasta videos. No usamos un OCR. Nuestros agentes son multimodales.",
     },
     {
-      icon: UserCheck,
-      title: "Evaluación de Pacientes",
+      icon: FileCheck,
+      title: "Responde con información verificada",
       description:
-        "Realiza preguntas específicas para determinar la elegibilidad del paciente para estudios.",
+        "Nuestros agentes tienen herramientas que le permiten responder información verificada de los estudios, para no responder con información falsa.",
     },
     {
-      icon: MessageCircle,
-      title: "WhatsApp Nativo",
+      icon: RefreshCwOff,
+      title: "Sistema de autocorreción",
       description:
-        "Integración completa con WhatsApp Business para una experiencia familiar.",
+        "Nuestro sistema corrige a los agentes cuando se equivocan, reduciendo el porcentaje de error a menos del 1%",
     },
   ];
 
@@ -74,22 +80,22 @@
   ];
 
   const testimonials = [
+	{
+      name: "Dr. Carlos Mendoza",
+      clinic: "Clínica Especializada del Noroeste",
+      text: "La capacidad de entender ordenes médicas casi ilegibles me parece una locura. Increíble tecnología.",
+      rating: 5,
+    },
+	{
+      name: "Dra. Ana Rodríguez",
+      clinic: "Instituto de Estudios Médicos Sur",
+      text: "Gracias al agente nuestros pacientes son atendidos inmediatamente y nuestra agenda está perfectamente organizada.",
+      rating: 5,
+    },
     {
       name: "Dr. María González",
       clinic: "Centro Médico San Rafael",
-      text: "Nuestro agente de IA ha revolucionado la forma en que gestionamos las citas. Los pacientes están más satisfechos y nosotros más organizados.",
-      rating: 5,
-    },
-    {
-      name: "Dr. Carlos Mendoza",
-      clinic: "Clínica Especializada del Norte",
-      text: "La capacidad de leer recetas escritas a mano nos ha ahorrado horas de trabajo manual. Increíble tecnología.",
-      rating: 5,
-    },
-    {
-      name: "Dra. Ana Rodríguez",
-      clinic: "Instituto de Estudios Médicos",
-      text: "El proceso de evaluación de pacientes es ahora mucho más eficiente. Recomiendo este servicio al 100%.",
+      text: "Nuestro agente transformo nuestra visión sobre los procesos que podemos automatizar con nuestra clínica.",
       rating: 5,
     },
   ];
@@ -110,27 +116,11 @@
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between items-center h-16">
       <div class="flex items-center space-x-2">
-        <MessageCircle class="h-8 w-8 text-blue-600" />
-        <span class="font-bold text-xl text-gray-900">MediBot AI</span>
+        <img src={Logo} class="w-[120px]" alt="" />
       </div>
 
       <!-- Desktop Menu -->
       <div class="hidden md:flex items-center space-x-8">
-        <a
-          href="#features"
-          class="text-gray-700 hover:text-blue-600 transition-colors"
-          >Características</a
-        >
-        <a
-          href="#benefits"
-          class="text-gray-700 hover:text-blue-600 transition-colors"
-          >Beneficios</a
-        >
-        <a
-          href="#testimonials"
-          class="text-gray-700 hover:text-blue-600 transition-colors"
-          >Testimonios</a
-        >
         <a
           href="#pricing"
           class="text-gray-700 hover:text-blue-600 transition-colors">Precios</a
@@ -139,7 +129,11 @@
       </div>
 
       <!-- Mobile Menu Button -->
-      <button class="md:hidden p-2" onclick={() => (isMenuOpen = !isMenuOpen)}>
+      <button
+        aria-label="button"
+        class="md:hidden p-2"
+        onclick={() => (isMenuOpen = !isMenuOpen)}
+      >
         <div class="w-6 h-6 flex flex-col justify-center items-center">
           <span
             class="w-4 h-0.5 bg-gray-600 mb-1 transition-all {isMenuOpen
@@ -198,39 +192,34 @@
     <div class="grid lg:grid-cols-2 gap-12 items-center">
       <div class="text-center lg:text-left">
         <h1
-          class="text-4xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight"
-        >
-          Revoluciona tu <span class="text-blue-600">Clínica Médica</span> con IA
+          class="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
+          El primer Agente IA que realmente atiende tu <span class="text-blue-600">Clínica Médica</span>
         </h1>
-        <p class="text-xl text-gray-600 mb-8 leading-relaxed">
-          Automatiza el agendamiento de citas, lee recetas escritas a mano y
-          evalúa pacientes con nuestros agentes de IA para WhatsApp. Disponible
-          24/7 para tu clínica.
+        <p class="md:text-xl text-gray-600 mb-8 leading-relaxed">
+          Agenda, edita o cancela citas, interpreta ordenes médicas, envía notificaciones y recordatorios, con una IA que de verdad entiende todo el proceso de tus clientes.
         </p>
         <div
           class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
         >
           <Button
             size="lg"
-            class="bg-blue-600 hover:bg-blue-700 text-lg px-8 py-4"
-          >
-            Comenzar Ahora
+            class="bg-blue-600 hover:bg-blue-700 text-lg px-8 py-4">
+            Agendar llamada
             <ArrowRight class="ml-2 h-5 w-5" />
           </Button>
           <Button variant="outline" size="lg" class="text-lg px-8 py-4">
-            Ver Demo
+            Ver Demostración
           </Button>
         </div>
         <div
-          class="mt-8 flex items-center justify-center lg:justify-start space-x-6 text-sm text-gray-500"
-        >
+          class="mt-8 flex items-center justify-center lg:justify-start space-x-6 text-sm text-gray-500">
           <div class="flex items-center">
             <CheckCircle class="h-5 w-5 text-blue-500 mr-2" />
-            Implementación en 48h
+            Implementación en 5 días
           </div>
           <div class="flex items-center">
             <CheckCircle class="h-5 w-5 text-blue-500 mr-2" />
-            Soporte 24/7
+            Activo 24/7
           </div>
         </div>
       </div>
@@ -239,32 +228,30 @@
         <div class="bg-white rounded-2xl shadow-2xl p-6 max-w-sm mx-auto">
           <div class="flex items-center space-x-3 mb-4">
             <div
-              class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center"
-            >
-              <MessageCircle class="h-6 w-6 text-white" />
+              class="w-10 h-10 rounded-full flex items-center justify-center">
+              <img src={IconoLogo} class="w-[80%]" alt="">
             </div>
             <div>
-              <h3 class="font-semibold text-gray-900">MediBot AI</h3>
+              <h3 class="font-semibold text-gray-900">Agentefy <i>Med</i></h3>
               <p class="text-sm text-blue-600">En línea</p>
             </div>
           </div>
 
           <div class="space-y-3">
             <div class="bg-gray-100 rounded-lg p-3 text-sm">
-              Hola! Soy tu asistente médico virtual. ¿En qué puedo ayudarte hoy?
+              Hola, soy tu asistente de Clinica 123. ¿En qué puedo ayudarte hoy?
             </div>
             <div class="bg-blue-500 text-white rounded-lg p-3 text-sm ml-8">
               Necesito agendar una cita para un estudio
             </div>
             <div class="bg-gray-100 rounded-lg p-3 text-sm">
-              Perfecto! Te ayudo con eso. ¿Podrías enviarme tu receta médica?
+              Perfecto ¿Cuentas con una orden médica?
             </div>
             <div class="bg-blue-500 text-white rounded-lg p-3 text-sm ml-8">
-              📄 [Imagen de receta]
+              <img src={OrdenMedica} alt="">
             </div>
             <div class="bg-gray-100 rounded-lg p-3 text-sm">
-              He leído tu receta. Necesitas un estudio de sangre. ¿Prefieres
-              mañana a las 9:00 AM o 2:00 PM?
+              Veo que necesitas una resonancia magnética de rodilla derecha. ¿Para que día te gustaria agendar?
             </div>
           </div>
         </div>
@@ -285,33 +272,45 @@
   </div>
 </section>
 
+<!-- Video Section -->
+<section id="features" class="py-20 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+        Mira en un video el funcionamiento del agente y nuestra plataforma
+      </h2>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+        
+      </p>
+    </div>
+
+    <div class="grid place-items-center max-w-[800px] mx-auto rounded-[8px] overflow-hidden">
+      <div class="w-full" style="padding:56.25% 0 0 0;position:relative; border-radius: 8px;"><iframe src="https://player.vimeo.com/video/1109260978?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="2025-08-11 23-55-08"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+    </div>
+  </div>
+</section>
+
 <!-- Features Section -->
 <section id="features" class="py-20 bg-white">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center mb-16">
       <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-        Características Principales
+        ¿Qué púede hacer el agente?
       </h2>
       <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-        Nuestros agentes de IA están diseñados específicamente para clínicas
-        médicas, con funcionalidades avanzadas que simplifican tu trabajo
-        diario.
+        Nuestros agentes de IA están diseñados para atender a tus pacientes en el proceso de agendamiento.
+		Sus capacidades tecnologicas le permiten entender más allá de solo texto y llevar una conversación realista.
       </p>
     </div>
 
     <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
       {#each features as feature}
         <Card
-          class="text-center hover:shadow-lg transition-shadow duration-300"
-        >
+          class="text-center hover:shadow-lg transition-shadow duration-300">
           <CardHeader>
             <div
-              class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4"
-            >
-              <svelte:component
-                this={feature.icon}
-                class="h-8 w-8 text-blue-600"
-              />
+              class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+			  <feature.icon class="h-7 w-7 text-blue-600"></feature.icon>
             </div>
             <CardTitle class="text-xl mb-2">{feature.title}</CardTitle>
           </CardHeader>
@@ -331,12 +330,10 @@
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center mb-16">
       <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-        ¿Por qué elegir MediBot AI?
+        ¿Por qué elegir Agentefy Med?
       </h2>
       <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-        Transforma la experiencia de tus pacientes y optimiza la eficiencia de
-        tu clínica con tecnología de inteligencia artificial de última
-        generación.
+        Nuestro sistema contempla todas las posibilidades para que tus pacientes tengan una experiencia incluso mejor que con humano. Y una plataforma que de manera sencillo te permite administrarlo todo.
       </p>
     </div>
 
@@ -371,8 +368,8 @@
         Lo que dicen nuestros clientes
       </h2>
       <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-        Clínicas médicas de toda Latinoamérica ya están transformando su
-        atención al paciente con nuestros agentes de IA.
+        Clínicas médicas de toda Latinoamérica ya están automatizando su
+        atención a pacientes y maximizando su agenda para aprovechar todos los horarios con nuestros agentes de IA.
       </p>
     </div>
 
@@ -435,7 +432,7 @@
               <h3 class="text-2xl font-bold text-gray-900 mb-2">
                 Implementación
               </h3>
-              <div class="text-4xl font-bold text-blue-600 mb-2">$1,500</div>
+              <div class="text-4xl font-bold text-blue-600 mb-2">$19,500 MXN</div>
               <p class="text-gray-600">Pago único</p>
               <ul class="mt-4 space-y-2 text-sm text-gray-600">
                 <li class="flex items-center">
@@ -464,12 +461,12 @@
                 <Calendar class="h-10 w-10 text-blue-600" />
               </div>
               <h3 class="text-2xl font-bold text-gray-900 mb-2">Mensualidad</h3>
-              <div class="text-4xl font-bold text-blue-600 mb-2">$49</div>
+              <div class="text-4xl font-bold text-blue-600 mb-2">$1,499 MXN</div>
               <p class="text-gray-600">Por mes</p>
               <ul class="mt-4 space-y-2 text-sm text-gray-600">
                 <li class="flex items-center">
                   <CheckCircle class="h-4 w-4 text-blue-500 mr-2" />
-                  Mensajes ilimitados
+                  Hasta 2000 mensajes
                 </li>
                 <li class="flex items-center">
                   <CheckCircle class="h-4 w-4 text-blue-500 mr-2" />
@@ -477,7 +474,7 @@
                 </li>
                 <li class="flex items-center">
                   <CheckCircle class="h-4 w-4 text-blue-500 mr-2" />
-                  Soporte técnico 24/7
+                  Soporte técnico veloz
                 </li>
                 <li class="flex items-center">
                   <CheckCircle class="h-4 w-4 text-blue-500 mr-2" />
