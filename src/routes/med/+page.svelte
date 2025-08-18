@@ -7,7 +7,7 @@
 	import Testimonials from '$lib/components/med/Testimonials.svelte';
 	import Pricing from '$lib/components/med/Pricing.svelte';
 	import Cta from '$lib/components/med/CTA.svelte';  
-	import Footer from '$lib/components/pre-landing/Footer.svelte';
+	import Footer from '$lib/components/med/Footer.svelte';
 </script>
 
 	<Header></Header>
@@ -17,5 +17,5 @@
 	<Benefits></Benefits>
 	<Testimonials></Testimonials>
 	<Pricing></Pricing>
-	<Cta></Cta>
+	<!-- <Cta></Cta> -->
 	<Footer></Footer>

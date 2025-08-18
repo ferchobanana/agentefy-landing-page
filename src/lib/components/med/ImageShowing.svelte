@@ -9,7 +9,7 @@
                 Una sola plataforma para administar todo
             </h2>
             <p class="text-[1.1rem] max-w-[800px] mx-auto">
-                Nuestra plataforma te permite administrar todo el comportamiento e instrucciones de tu agente en un solo lugar, de manera súper sencilla.
+                Como parte del servicio incluimos nuestra plataforma que te permite administrar todo el comportamiento e instrucciones de tu agente en un solo lugar, de manera muy sencilla.
             </p>
         </div>
 
