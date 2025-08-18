@@ -75,7 +75,7 @@
 				{
 					role: "tool",
 					icon: Hammer,
-					text: "Verificación <b>información resonancias<b>",
+					text: "Verificación <b>información resonancias</b>",
 					image: null
 				},
 				{
