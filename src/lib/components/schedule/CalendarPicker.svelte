@@ -5,8 +5,10 @@
     import { enhance } from "$app/forms";
     import { goto } from "$app/navigation";
     import { user_state } from "./state.svelte";
+    import { LoaderCircle } from "@lucide/svelte";
     
     let { step = $bindable() } = $props()
+    let loading = $state(false)
 
     // Current date in specific timezone
     const todayMexico = today("America/Mexico_City");
@@ -21,21 +23,23 @@
     // Current date in user's timezone
     // const localToday = today(getLocalTimeZone());
 
-    const available_hours = [
+    const available_hours = $state([
         { hora: "9:00 am" },
         { hora: "10:00 am" },
         { hora: "11:00 am" },
         { hora: "12:00 pm" },
         { hora: "1:00 pm" },
-    ]
+    ])
     let selected_hour = $state("")
 
     // $inspect(value)
 
     const handle_submit: SubmitFunction = async ({ formData }) => {
+        loading = true
         formData.append("hora", selected_hour)
         
         return async ({ result, update }) => {
+            loading = false
             if(result.status == 200) {
                 await goto("/schedule/gracias")
             }
@@ -59,11 +63,18 @@
             <p class="text-[1.1rem] font-semibold">Horarios disponibles</p>
             <p class="text-[.9rem] text-gray-700">Selecciona uno</p>
         </div>
-        {#each available_hours as h}
-            <button class="horario" onclick={() => selected_hour = h.hora}>
-                {h.hora}
-            </button>
-        {/each}
+
+        {#if loading}
+            <div class="w-full h-[300px] grid place-items-center">
+                <LoaderCircle size="20" class="animate-spin"></LoaderCircle>
+            </div>
+        {:else}
+            {#each available_hours as h}
+                <button class="horario" onclick={() => selected_hour = h.hora}>
+                    {h.hora}
+                </button>
+            {/each}
+        {/if}
 
         <input type="hidden" name="phone_number" value={user_state.phone_number}>
         <input type="hidden" name="year" bind:value={value.year}>
