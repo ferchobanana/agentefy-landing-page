@@ -89,7 +89,7 @@
 					</div>
 
 					<div class="text-center">
-						<Button size="lg" class="bg-blue-600 hover:bg-blue-700 text-lg px-12 py-4" >
+						<Button href="/schedule" size="lg" class="bg-blue-600 hover:bg-blue-700 text-lg px-12 py-4" >
 							Agendar llamada
 							<ArrowRight class="ml-2 h-5 w-5" />
 						</Button>

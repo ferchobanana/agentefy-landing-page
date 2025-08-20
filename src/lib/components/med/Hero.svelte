@@ -26,7 +26,7 @@
 				</p>
 				<div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
 					<Button
-						href="/date-form-med"
+						href="/schedule"
 						size="lg"
 						class="bg-blue-600 hover:bg-blue-700 text-lg px-8 py-4">
 						Agendar llamada
