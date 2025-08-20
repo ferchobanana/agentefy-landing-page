@@ -1,11 +1,13 @@
 <script lang="ts">
     import Calendar from "$lib/components/ui/calendar/calendar.svelte";
     import { CalendarDate, parseDate, today, getLocalTimeZone } from "@internationalized/date";
-    import Logo from "$lib/imgs/logo.png"
     import type { SubmitFunction } from "@sveltejs/kit";
     import { enhance } from "$app/forms";
     import { goto } from "$app/navigation";
+    import { user_state } from "./state.svelte";
     
+    let { step = $bindable() } = $props()
+
     // Current date in specific timezone
     const todayMexico = today("America/Mexico_City");
     let value = $state<CalendarDate>(todayMexico);
@@ -35,19 +37,12 @@
         
         return async ({ result, update }) => {
             if(result.status == 200) {
-                await goto("/med")
+                await goto("/schedule/gracias")
             }
         }
-    } 
+    }
 </script>
 
-<svelte:head>
-    <title>Agendar cita - Agentefy Med</title>
-</svelte:head>
-
-<div class="w-[120px] mx-auto mt-6">
-    <img src={Logo} alt="">
-</div>
 <div class="grid grid-cols-1 md:grid-cols-[1fr_300px] gap-8 w-full max-w-[600px] md:mt-6 mx-auto p-4">
     <Calendar
         minValue={todayMexico}
@@ -59,7 +54,7 @@
         />
 
     <!-- Horarios disponibles -->
-    <form class="flex flex-col gap-2" method="post" use:enhance={handle_submit}>
+    <form class="flex flex-col gap-2" action="?/save_date" method="post" use:enhance={handle_submit}>
         <div class="mb-2">
             <p class="text-[1.1rem] font-semibold">Horarios disponibles</p>
             <p class="text-[.9rem] text-gray-700">Selecciona uno</p>
@@ -70,8 +65,7 @@
             </button>
         {/each}
 
-        <input type="hidden" name="email">
-        <input type="hidden" name="name">
+        <input type="hidden" name="phone_number" value={user_state.phone_number}>
         <input type="hidden" name="year" bind:value={value.year}>
         <input type="hidden" name="month" bind:value={value.month}>
         <input type="hidden" name="day" bind:value={value.day}>

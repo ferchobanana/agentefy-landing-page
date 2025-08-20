@@ -1,8 +1,9 @@
 {
 	"/": [],
-	"/date-form-med": [
-		"src/routes/date-form-med/+page.server.ts"
-	],
 	"/med": [],
+	"/schedule": [
+		"src/routes/schedule/+page.server.ts"
+	],
+	"/schedule/gracias": [],
 	"/temp-landing": []
 }
