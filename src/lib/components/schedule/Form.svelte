@@ -12,11 +12,13 @@
     let loading = $state(false)
 
     let name = $state("")
+    let email = $state("")
     let phone_number = $state("")
 
     const handle_submit: SubmitFunction = async () => {
         loading = true
         user_state.name = name
+        user_state.email = email
         user_state.phone_number = phone_number
 
         return async ({ result, update }) => {
@@ -42,12 +44,22 @@
                             placeholder="Nombre"
                             bind:value={name} />
                 </div>
+
+                <div>
+                    <Label class="mb-1">Correo electrónico</Label>
+                    <Input  name="email"
+                            required
+                            type="email"
+                            placeholder="juan@gmail.com"
+                            bind:value={email} />
+                </div>
     
                 <div>
                     <Label class="mb-1">Número celular</Label>
                     <Input  name="phone_number"
                             required
-                            type="number"
+                            type="tel"
+                            inputmode="tel"
                             placeholder="5532300351"
                             bind:value={phone_number} />
                 </div>
@@ -56,9 +68,11 @@
                     {#if loading}
                         <LoaderCircle size="18" class="animate-spin"></LoaderCircle>
                     {:else}
-                        Enviar
+                        Quiero agendar
                     {/if}
                 </Button>
+
+                <p class="text-[.8rem]">No usaremos tu información para enviarte publicidad o spam, solo la usaremos para contactarte.</p>
             </form>
         </Card.Content>
     </Card.Root>

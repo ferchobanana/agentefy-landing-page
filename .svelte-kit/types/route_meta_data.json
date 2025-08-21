@@ -1,6 +1,10 @@
 {
-	"/": [],
-	"/med": [],
+	"/": [
+		"src/routes/+page.server.ts"
+	],
+	"/med": [
+		"src/routes/med/+page.server.ts"
+	],
 	"/schedule": [
 		"src/routes/schedule/+page.server.ts"
 	],

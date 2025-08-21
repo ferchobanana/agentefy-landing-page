@@ -13,8 +13,8 @@ export const nodes = [
 export const server_loads = [];
 
 export const dictionary = {
-		"/": [2],
-		"/med": [3],
+		"/": [~2],
+		"/med": [~3],
 		"/schedule": [~4],
 		"/schedule/gracias": [5],
 		"/temp-landing": [6]

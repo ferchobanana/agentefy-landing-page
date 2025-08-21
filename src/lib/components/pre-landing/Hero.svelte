@@ -1,5 +1,28 @@
 <script lang="ts">
-	import { Bot } from "@lucide/svelte";
+	import * as Card from "$lib/components/ui/card/index.js";
+    import { Label } from "$lib/components/ui/label";
+    import { Input } from "$lib/components/ui/input";
+    import Button from "$lib/components/ui/button/button.svelte";
+    import { LoaderCircle, Bot } from "@lucide/svelte";
+    import type { SubmitFunction } from "@sveltejs/kit";
+    import { enhance } from "$app/forms";
+
+
+	let loading = $state(false)
+	let form_result = $state("")
+
+	const handle_submit: SubmitFunction = () => {
+		loading = true
+
+		return async ({ result }) => {
+			loading = false
+			if(result.status == 200) {
+				form_result = "Te has registrado con exito :)"
+			} else {
+				form_result = "Hubo un problema con tu registro :("
+			}
+		}
+	}
 </script>
 
 <section class="relative overflow-hidden py-12 sm:py-18">
@@ -29,9 +52,39 @@
 			</p>
 
 			<div class="form w-full max-w-[400px] h-[380px] mx-auto my-8 rounded-md overflow-hidden">
-				<div class="background-[#fff]">
-
-				</div>
+				<Card.Root>
+					<Card.Header>
+						<Card.Title>
+							Registrate
+						</Card.Title>
+						<Card.Description>
+							Y obten 3 meses gratis en nuestro lanzamiento
+						</Card.Description>
+					</Card.Header>
+					<Card.Content>
+						<form method="post" use:enhance={handle_submit}>
+							{#if form_result.length > 0}
+								<div class="w-full h-full grid place-items-center">
+									<p>{form_result}</p>
+								</div>
+							{:else}
+								<Label class="mb-1">Nombre</Label>
+								<Input required class="mb-2" name="nombre" placeholder="Nombre" />
+								<Label class="mb-1">Correo</Label>
+								<Input required type="email" inputmode="email" class="mb-2" name="correo" placeholder="Correo" />
+								<Label class="mb-1">¿Cual es tu negocio? 🤔</Label>
+								<Input required class="mb-2" name="negocio" placeholder="Tu negocio" />
+								<Button type="submit" class="w-full cursor-pointer">
+									{#if loading}
+										<LoaderCircle size="18" class="animate-spin"></LoaderCircle>
+									{:else}
+										Registrarme	
+									{/if}
+								</Button>
+							{/if}
+						</form>
+					</Card.Content>
+				</Card.Root>
 			</div>
 		</div>
 	</div>
