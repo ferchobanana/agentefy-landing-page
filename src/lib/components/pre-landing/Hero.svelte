@@ -17,7 +17,7 @@
 		return async ({ result }) => {
 			loading = false
 			if(result.status == 200) {
-				form_result = "Te has registrado con exito :)"
+				form_result = `Te has registrado con exito 😎 Cuando hagamos el lanzamiento en pocas semanas, serás de los primeros en ser notificado.`
 			} else {
 				form_result = "Hubo un problema con tu registro :("
 			}
@@ -25,19 +25,19 @@
 	}
 </script>
 
-<section class="relative overflow-hidden py-12 sm:py-18">
-	<div class="container mx-auto px-4 sm:px-6 lg:px-8">
-		<div class="mx-auto max-w-4xl text-center">
+<section class="relative overflow-hidden pt-12 sm:py-18">
+	<div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+		<div class="mx-auto max-w-4xl">
 			<!-- Badge -->
 			<div
-				class="mb-4 inline-flex items-center rounded-full bg-blue-50 px-4 py-2 text-sm font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10">
+				class="mb-4 text-center inline-flex items-center rounded-full bg-blue-50 px-4 py-2 text-sm font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10">
 				<Bot class="mr-2 h-4 w-4" />
 				La plataforma definitiva de Agentes IA
 			</div>
 
 			<!-- Headline -->
 			<h1
-				class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl lg:text-7xl">
+				class="text-[3.2rem] sm:text-6xl lg:text-7xl font-bold leading-none tracking-tight text-gray-900 text-center">
 				Ahora cualquiera puede crear
 				<span
 					class="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
@@ -46,9 +46,9 @@
 			</h1>
 
 			<!-- Subheadline -->
-			<p class="mt-6 text-lg leading-6 text-gray-600 sm:text-xl">
-				Crea Agentes IA avanzados con una interfaz tan sencilla que cualquiera puede usar.
-				<span class="inline-flex">Sin código, sin nodos, sin flujos de trabajo y sin límites.</span>
+			<p class="mt-6 text-[1rem] sm:text-xl leading-6 text-gray-600 ">
+				Agentes IA avanzados con una interfaz que cualquiera puede usar.
+				Sin código, sin nodos, sin flujos de trabajo y sin límites.
 			</p>
 
 			<div class="form w-full max-w-[400px] h-[380px] mx-auto my-8 rounded-md overflow-hidden">
@@ -69,11 +69,11 @@
 								</div>
 							{:else}
 								<Label class="mb-1">Nombre</Label>
-								<Input required class="mb-2" name="nombre" placeholder="Nombre" />
+								<Input required class="mb-2 text-[.9rem]" name="nombre" placeholder="Nombre" />
 								<Label class="mb-1">Correo</Label>
-								<Input required type="email" inputmode="email" class="mb-2" name="correo" placeholder="Correo" />
-								<Label class="mb-1">¿Cual es tu negocio? 🤔</Label>
-								<Input required class="mb-2" name="negocio" placeholder="Tu negocio" />
+								<Input required type="email" inputmode="email" class="mb-2 text-[.9rem]" name="correo" placeholder="Correo" />
+								<Label class="mb-1">¿De qué es tu negocio? 🤔</Label>
+								<Input required class="mb-2 text-[.9rem]" name="negocio" placeholder="Tu negocio" />
 								<Button type="submit" class="w-full cursor-pointer">
 									{#if loading}
 										<LoaderCircle size="18" class="animate-spin"></LoaderCircle>

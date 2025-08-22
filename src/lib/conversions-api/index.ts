@@ -2,8 +2,8 @@ import { error } from '@sveltejs/kit';
 import bizSdk from 'facebook-nodejs-business-sdk';
 
 // Configuración de las variables de entorno
-const ACCESS_TOKEN = ""
-const PIXEL_ID = "";
+const ACCESS_TOKEN = "EAAnpZA1ZAuvwEBPDFfoEKZCpfzgPgldBIMF5GGwERmlB2qRC7GdXNEJbtVfZBhfnLcRk1zPKnNV9caEBv5XdoLdidPnAdNkojZCbMIUVF6Gomj2ZCVMm5zAXsgoG3Kc5Hw2JRu78dAmRgn04P5cmZAVevKDtQwUbKlepXA12OhBtqCrkZAh5Pm8aakor3ZAoKyItbQQZDZD"
+const PIXEL_ID = "1164684405715744";
 
 // Verificar que las variables de entorno estén configuradas
 if (!ACCESS_TOKEN || !PIXEL_ID) {
@@ -17,6 +17,7 @@ const api = FacebookAdsApi.init(ACCESS_TOKEN);
 // Interfaz para los parámetros del evento
 interface ConversionEventParams {
     eventName: string;
+    person_name?: string;
     email?: string;
     phone?: string;
     productId?: string;
@@ -39,6 +40,10 @@ export async function sendConversionEvent(
 
         // Configurar datos del usuario
         const userData = new UserData();
+
+        if(params.person_name) {
+            userData.setFirstNames([params.person_name])
+        }
 
         if (params.email) {
             userData.setEmails([params.email]);

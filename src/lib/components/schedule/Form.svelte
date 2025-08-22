@@ -10,6 +10,7 @@
 
     let { step = $bindable() } = $props()
     let loading = $state(false)
+    let error = $state("")
 
     let name = $state("")
     let email = $state("")
@@ -22,8 +23,12 @@
         user_state.phone_number = phone_number
 
         return async ({ result, update }) => {
-            loading = false
-            step = 2
+            if(result.status == 200) {
+                loading = false
+                step = 2
+            } else {
+                error = "Parece que hubo un error en tu registro, intentalo nuevamente 😢"
+            }
         }
     }
 
@@ -71,6 +76,10 @@
                         Quiero agendar
                     {/if}
                 </Button>
+
+                {#if error.length > 0}
+                    <p class="text-[.9rem] text-red-500">{error}</p>
+                {/if}
 
                 <p class="text-[.8rem]">No usaremos tu información para enviarte publicidad o spam, solo la usaremos para contactarte.</p>
             </form>

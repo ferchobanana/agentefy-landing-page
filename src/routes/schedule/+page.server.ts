@@ -1,5 +1,6 @@
 import sql from "$lib/db/db.js"
-// import { sendConversionEvent } from "$lib/conversions-api/index.js";
+import { sendConversionEvent } from "$lib/conversions-api/index.js";
+import { fail } from "@sveltejs/kit";
 
 export const actions = {
     save_form: async ({ request, url, cookies }) => {
@@ -26,26 +27,40 @@ export const actions = {
                             ${sql(schedule, "name", "email", "phone_number")}
                         `
             
-            // const purchaseEvent = await sendConversionEvent(
-            //     {
-            //         eventName: 'Lead',
-            //         email: schedule.email,
-            //         phone: schedule.phone_number,
-            //         eventSourceUrl: url.toString()
-            //     },
-            //     clientIp,
-            //     userAgent,
-            //     fbp,
-            //     fbc
-            // );
+            const format_phone_number = schedule.phone_number.startsWith("52") ? schedule.phone_number : "52" + schedule.phone_number
 
-            // console.log(purchaseEvent)
+            console.log(format_phone_number)
+            console.log(schedule.name)
+            console.log(schedule.email)
+            console.log(schedule.phone_number)
+            console.log(clientIp)
+            console.log(userAgent)
+            console.log(fbp)
+            console.log(fbc)
+
+            const leadEvent = await sendConversionEvent(
+                {
+                    eventName: 'Lead',
+                    person_name: schedule.name,
+                    email: schedule.email,
+                    phone: format_phone_number,
+                    eventSourceUrl: url.toString()
+                },
+                clientIp,
+                userAgent,
+                fbp,
+                fbc
+            );
+
+            console.log(leadEvent)
 
             return { success: true }
         }
-        catch {}
+        catch (err) {
+            console.log(err)
+            return fail(400, { message: "Hubo un error" })
+        }
 
-        return {}
     },
     save_date: async ({ request }) => {
         const form_data = await request.formData()
@@ -64,9 +79,12 @@ export const actions = {
                             SET ${ sql(schedule, "hour", "day", "month", "year") }
                             WHERE phone_number = ${ phone_number }
                         `
-            console.log(res)
+            
             return { success: true }
         }
-        catch {}
+        catch (err) {
+            console.log(err)
+            return fail(400, { message: "Hubo un error" })
+        }
     }
 }
