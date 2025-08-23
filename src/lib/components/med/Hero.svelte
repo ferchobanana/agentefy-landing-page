@@ -33,7 +33,10 @@
 						<ArrowRight class="ml-2 h-5 w-5" />
 						
 					</Button>
-					<Button variant="outline" size="lg" class="text-lg px-8 py-4">
+					<Button href="https://wa.me/529931983931"
+							variant="outline"
+							size="lg"
+							class="text-lg px-8 py-4">
 						Ver Demostración
 					</Button>
 				</div>
