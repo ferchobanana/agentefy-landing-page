@@ -18,18 +18,15 @@ export const actions = {
         const schedule = {
             name: form_data.get("name") as string,
             email: form_data.get("email") as string,
-            phone_number: form_data.get("phone_number") as string,
+            phone_number: (form_data.get("country_calling_code") as string) + (form_data.get("phone_number") as string),
+            business_type: form_data.get("business_type") as string
         }
 
         try {
             const res = await sql`
                             INSERT INTO schedules
-                            ${sql(schedule, "name", "email", "phone_number")}
+                            ${sql(schedule, "name", "email", "phone_number", "business_type")}
                         `
-            
-            const format_phone_number = schedule.phone_number.startsWith("52") ? schedule.phone_number : "52" + schedule.phone_number
-
-            console.log(format_phone_number)
             console.log(schedule.name)
             console.log(schedule.email)
             console.log(schedule.phone_number)
@@ -43,7 +40,7 @@ export const actions = {
                     eventName: 'Lead',
                     person_name: schedule.name,
                     email: schedule.email,
-                    phone: format_phone_number,
+                    phone: schedule.phone_number,
                     eventSourceUrl: url.toString()
                 },
                 clientIp,

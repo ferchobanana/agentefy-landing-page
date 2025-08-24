@@ -39,6 +39,7 @@
 	},
 	"dependencies": {
 		"facebook-nodejs-business-sdk": "^23.0.1",
+		"libphonenumber-js": "^1.12.13",
 		"postgres": "^3.4.7"
 	}
 }

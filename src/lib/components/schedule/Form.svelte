@@ -3,10 +3,12 @@
     import Label from "$lib/components/ui/label/label.svelte";
     import { Input } from "$lib/components/ui/input";
     import Button from "$lib/components/ui/button/button.svelte";
+    import * as Select from "$lib/components/ui/select/index.js";
     import { LoaderCircle } from "@lucide/svelte";
     import type { SubmitFunction } from "@sveltejs/kit";
     import { enhance } from "$app/forms";
     import { user_state } from "./state.svelte"
+    import { getCountries, getCountryCallingCode, type CountryCode } from 'libphonenumber-js'
 
     let { step = $bindable() } = $props()
     let loading = $state(false)
@@ -14,7 +16,27 @@
 
     let name = $state("")
     let email = $state("")
+
+    let selected_country: CountryCode = $state('MX');
+    const countries = getCountries().map(country => ({
+        code: country,
+        name: new Intl.DisplayNames(['es'], { type: 'region' }).of(country),
+        callingCode: getCountryCallingCode(country)
+    }));
+    let selected_country_calling_code = $derived(getCountryCallingCode(selected_country))
     let phone_number = $state("")
+
+    let business_types = [
+        { value: "centro-de-diagnostico-imagen", label: "Centro de diagnóstico por imagen" },
+        { value: "laboratorio", label: "Laboratorio" },
+        { value: "clinica", label: "Clínica" },
+        { value: "consultorio", label: "Consultorio" },
+        { value: "otro", label: "Otro" },
+    ]
+    let selected_business_type = $state("")
+    let business_type_trigger_content = $derived(
+        business_types.find((b) => b.value === selected_business_type)?.label ?? "Selecciona una opción"
+    )
 
     const handle_submit: SubmitFunction = async () => {
         loading = true
@@ -61,12 +83,40 @@
     
                 <div>
                     <Label class="mb-1">Número celular</Label>
-                    <Input  name="phone_number"
-                            required
-                            type="tel"
-                            inputmode="tel"
-                            placeholder="5532300351"
-                            bind:value={phone_number} />
+                    <div class="grid grid-cols-[80px_1fr] gap-1">
+                        <Select.Root type="single" name="country_code" bind:value={selected_country}>
+                            <Select.Trigger class="w-full">
+                                +{selected_country_calling_code}
+                            </Select.Trigger>
+                            <Select.Content>
+                                {#each countries as c}
+                                    <Select.Item value={c.code}>{c.name} +{c.callingCode}</Select.Item>
+                                {/each}
+                            </Select.Content>
+                        </Select.Root>
+                        <Input  name="phone_number"
+                                required
+                                type="tel"
+                                inputmode="tel"
+                                placeholder="5532300351"
+                                bind:value={phone_number} />
+                    </div>
+                </div>
+
+                <input type="hidden" name="country_calling_code" value={selected_country_calling_code}>
+
+                <div>
+                    <Label class="mb-1">¿Cuál es tu tipo de negocio?</Label>
+                    <Select.Root type="single" name="business_type" bind:value={selected_business_type}>
+                        <Select.Trigger class="w-full">
+                            {business_type_trigger_content}
+                        </Select.Trigger>
+                        <Select.Content>
+                            {#each business_types as b}
+                                <Select.Item value={b.value}>{b.label}</Select.Item>
+                            {/each}
+                        </Select.Content>
+                    </Select.Root>
                 </div>
     
                 <Button type="submit" class="cursor-pointer">
