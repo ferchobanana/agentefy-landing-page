@@ -42,7 +42,7 @@
         loading = true
         user_state.name = name
         user_state.email = email
-        user_state.phone_number = phone_number
+        user_state.phone_number = selected_country_calling_code + phone_number
 
         return async ({ result, update }) => {
             if(result.status == 200) {
