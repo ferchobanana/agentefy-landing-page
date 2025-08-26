@@ -19,13 +19,14 @@ export const actions = {
             name: form_data.get("name") as string,
             email: form_data.get("email") as string,
             phone_number: (form_data.get("country_calling_code") as string) + (form_data.get("phone_number") as string),
-            business_type: form_data.get("business_type") as string
+            business_type: form_data.get("business_type") as string,
+            charge: form_data.get("cargo") as string,
         }
 
         try {
             const res = await sql`
                             INSERT INTO schedules
-                            ${sql(schedule, "name", "email", "phone_number", "business_type")}
+                            ${sql(schedule, "name", "email", "phone_number", "business_type", "charge")}
                         `
             console.log(schedule.name)
             console.log(schedule.email)
@@ -35,21 +36,21 @@ export const actions = {
             console.log(fbp)
             console.log(fbc)
 
-            const leadEvent = await sendConversionEvent(
-                {
-                    eventName: 'Lead',
-                    person_name: schedule.name,
-                    email: schedule.email,
-                    phone: schedule.phone_number,
-                    eventSourceUrl: url.toString()
-                },
-                clientIp,
-                userAgent,
-                fbp,
-                fbc
-            );
+            // const leadEvent = await sendConversionEvent(
+            //     {
+            //         eventName: 'Lead',
+            //         person_name: schedule.name,
+            //         email: schedule.email,
+            //         phone: schedule.phone_number,
+            //         eventSourceUrl: url.toString()
+            //     },
+            //     clientIp,
+            //     userAgent,
+            //     fbp,
+            //     fbc
+            // );
 
-            console.log(leadEvent)
+            // console.log(leadEvent)
 
             return { success: true }
         }

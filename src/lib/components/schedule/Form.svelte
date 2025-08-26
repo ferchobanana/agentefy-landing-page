@@ -38,6 +38,19 @@
         business_types.find((b) => b.value === selected_business_type)?.label ?? "Selecciona una opción"
     )
 
+    let charges = [
+        { value: "dueno", label: "Dueño" },
+        { value: "responsable-marketing", label: "Responsable de Marketing" },
+        { value: "responsable-ventas", label: "Responsable de Ventas" },
+        { value: "responsable-operacion", label: "Responsable de operación" },
+        { value: "encargado", label: "Encargado" },
+        { value: "otro", label: "Otro" },
+    ]
+    let selected_charge = $state("")
+    let charge_trigger_content = $derived(
+        charges.find((c) => c.value === selected_charge)?.label ?? "Selecciona una opción"
+    )
+
     const handle_submit: SubmitFunction = async () => {
         loading = true
         user_state.name = name
@@ -114,6 +127,20 @@
                         <Select.Content>
                             {#each business_types as b}
                                 <Select.Item value={b.value}>{b.label}</Select.Item>
+                            {/each}
+                        </Select.Content>
+                    </Select.Root>
+                </div>
+
+                <div>
+                    <Label class="mb-1">¿Cuál es tu cargo?</Label>
+                    <Select.Root type="single" name="cargo" bind:value={selected_charge}>
+                        <Select.Trigger class="w-full">
+                            {charge_trigger_content}
+                        </Select.Trigger>
+                        <Select.Content>
+                            {#each charges as c}
+                                <Select.Item value={c.value}>{c.label}</Select.Item>
                             {/each}
                         </Select.Content>
                     </Select.Root>

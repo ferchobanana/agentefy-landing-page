@@ -8,7 +8,7 @@
 		CardTitle,
 	} from "$lib/components/ui/card";
 
-	import { Calendar, Bot, CheckCircle, ArrowRight, Zap } from "@lucide/svelte";
+	import { Calendar, CheckCircle } from "@lucide/svelte";
 </script>
 
 <!-- Pricing Section -->
@@ -20,18 +20,18 @@
 					<CardTitle class="text-3xl font-bold text-gray-900">
 						Inversión accesible
 					</CardTitle>
-					<CardDescription class="text-[1rem] text-gray-600">
-						Todo lo que necesitas para automatizar la atención de clientes de tu centro de diagnóstico
+					<CardDescription class="text-[.9rem] text-gray-600">
+						Todo lo que necesitas para automatizar la atención a clientes de tu centro médico.
 					</CardDescription>
 				</CardHeader>
-				<CardContent class="px-8 pb-8">
+				<CardContent class="px-4 pb-8"> 
 					<div class="flex justify-center gap-8 mb-8">
 						<div class="text-center">
 							<!-- <div class="bg-blue-100 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-1">
 								<Bot class="h-7 w-7 text-blue-600" />
 							</div> -->
 							<h3 class="text-[1.4rem] font-bold text-gray-900 leading-tight">
-								Implementación desde
+								Implementación
 							</h3>
 							<div class="text-[1.8rem] font-bold text-blue-600 leading-tight">
 								$19,499 MXN
@@ -45,7 +45,7 @@
 							<ul class="mt-4 space-y-2 text-sm text-gray-600">
 								<li class="flex items-center">
 									<CheckCircle class="h-4 w-4 text-blue-500 mr-2" />
-									Configuración completa
+									Configuración completa de Agente IA
 								</li>
 								<li class="flex items-center">
 									<CheckCircle class="h-4 w-4 text-blue-500 mr-2" />
@@ -53,7 +53,15 @@
 								</li>
 								<li class="flex items-center">
 									<CheckCircle class="h-4 w-4 text-blue-500 mr-2" />
-									Capacitación del equipo
+									Recordatorios automatizados
+								</li>
+								<li class="flex items-center">
+									<CheckCircle class="h-4 w-4 text-blue-500 mr-2" />
+									Eventos de FB para optimizar campañas
+								</li>
+								<li class="flex items-center">
+									<CheckCircle class="h-4 w-4 text-blue-500 mr-2" />
+									Plataforma con actualizaciones constantes
 								</li>
 								<li class="flex items-center">
 									<CheckCircle class="h-4 w-4 text-blue-500 mr-2" />
@@ -61,7 +69,7 @@
 								</li>
 								<li class="flex items-center">
 									<CheckCircle class="h-4 w-4 text-blue-500 mr-2" />
-									Actualizaciones automáticas
+									Capacitación de tu equipo
 								</li>
 								<li class="flex items-center">
 									<CheckCircle class="h-4 w-4 text-blue-500 mr-2" />
