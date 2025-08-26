@@ -36,21 +36,21 @@ export const actions = {
             console.log(fbp)
             console.log(fbc)
 
-            // const leadEvent = await sendConversionEvent(
-            //     {
-            //         eventName: 'Lead',
-            //         person_name: schedule.name,
-            //         email: schedule.email,
-            //         phone: schedule.phone_number,
-            //         eventSourceUrl: url.toString()
-            //     },
-            //     clientIp,
-            //     userAgent,
-            //     fbp,
-            //     fbc
-            // );
+            const leadEvent = await sendConversionEvent(
+                {
+                    eventName: 'Lead',
+                    person_name: schedule.name,
+                    email: schedule.email,
+                    phone: schedule.phone_number,
+                    eventSourceUrl: url.toString()
+                },
+                clientIp,
+                userAgent,
+                fbp,
+                fbc
+            );
 
-            // console.log(leadEvent)
+            console.log(leadEvent)
 
             return { success: true }
         }
