@@ -16,8 +16,8 @@
 	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 		<div class="grid lg:grid-cols-2 gap-12 items-center">
 			<div class="text-center lg:text-left">
-				<h1 class="text-5xl md:text-6xl tracking-tight font-bold text-gray-900 mb-6 leading-tight">
-					El primer Agente IA que realmente atiende tu <span class="text-blue-600">Centro de diagnóstico</span>
+				<h1 class="text-[2.5rem] md:text-6xl tracking-tight font-bold text-gray-900 mb-6 leading-tight">
+					El primer Agente IA que realmente atiende tu <span class="text-blue-600">Centro Médico</span>
 				</h1>
 				<p class="md:text-xl text-gray-600 mb-8 leading-relaxed">
 					Agenda, edita o cancela citas, interpreta ordenes médicas, envía
@@ -26,17 +26,15 @@
 				</p>
 				<div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
 					<Button
-						href="/schedule"
-						size="lg"
-						class="bg-blue-600 hover:bg-blue-700 text-lg px-8 py-4">
+						href="#pricing"
+						class="bg-blue-600 hover:bg-blue-700 text-lg h-[50px] min-w-[250px]">
+						<Calendar class="ml-2 h-5 w-5" />
 						Agendar llamada
-						<ArrowRight class="ml-2 h-5 w-5" />
-						
 					</Button>
+
 					<Button href="https://wa.me/529931983931"
 							variant="outline"
-							size="lg"
-							class="text-lg px-8 py-4">
+							class="text-lg px-8 py-4 h-[50px] min-w-[250px]">
 						Ver Demostración
 					</Button>
 				</div>
