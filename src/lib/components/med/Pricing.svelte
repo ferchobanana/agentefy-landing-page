@@ -27,9 +27,9 @@
 				<CardContent class="px-8 pb-8">
 					<div class="flex justify-center gap-8 mb-8">
 						<div class="text-center">
-							<div class="bg-blue-100 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-1">
+							<!-- <div class="bg-blue-100 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-1">
 								<Bot class="h-7 w-7 text-blue-600" />
-							</div>
+							</div> -->
 							<h3 class="text-[1.4rem] font-bold text-gray-900 leading-tight">
 								Implementación desde
 							</h3>
