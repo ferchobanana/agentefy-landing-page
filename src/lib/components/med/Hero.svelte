@@ -26,7 +26,7 @@
 				</p>
 				<div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
 					<Button
-						href="#pricing"
+						href="/schedule"
 						class="bg-blue-600 hover:bg-blue-700 text-lg h-[50px] min-w-[250px]">
 						<Calendar class="ml-2 h-5 w-5" />
 						Agendar llamada
